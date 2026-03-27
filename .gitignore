@@ -1,0 +1,8 @@
+# Compiled C++ binaries (no extension)
+**/solution
+**/solution2
+**/solution3
+**/sol
+
+# Xcode debug symbols
+**/*.dSYM/
