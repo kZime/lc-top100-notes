@@ -9,30 +9,31 @@ If $ARGUMENTS is already a slug, use it directly.
 
 Try the following sources in order, stopping at the first success:
 
-> Note: `leetcode.cn/graphql/` does NOT support the `questionData` query (returns invalid JSON). Only `.com` is tried.
-
 ### 2a. LeetCode COM GraphQL
 
-LeetCode requires a session cookie (CSRF protection). Use a two-step approach:
+LeetCode's CSRF check only verifies that the `x-csrftoken` header and `csrftoken` cookie match — the value itself is arbitrary. Use a single request (no GET handshake needed):
 
 ```bash
-# Step 1: GET the problem page to establish a session cookie
-curl -s -c /tmp/lc_cookies.txt \
-  'https://leetcode.com/problems/SLUG/' \
-  -H 'User-Agent: Mozilla/5.0' > /dev/null
-
-# Step 2: POST GraphQL with the session cookie
 curl -s -X POST 'https://leetcode.com/graphql' \
   -H 'Content-Type: application/json' \
   -H 'User-Agent: Mozilla/5.0' \
-  -H 'Referer: https://leetcode.com/problems/SLUG/' \
-  -b /tmp/lc_cookies.txt \
+  -H 'x-csrftoken: lc' \
+  -H 'Cookie: csrftoken=lc' \
   --data '{"query":"query questionData($titleSlug: String!) { question(titleSlug: $titleSlug) { questionId title difficulty content exampleTestcases metaData } }","variables":{"titleSlug":"SLUG"}}'
 ```
 
-### 2b. WebFetch（网络兜底）
+Check that the response contains `"data"` (not an HTML error page). If it fails, try 2b.
 
-Use the `WebFetch` tool on `https://leetcode.com/problems/SLUG/` and extract: description, examples, constraints, function signature.
+### 2b. LeetCode CN GraphQL（备用）
+
+```bash
+curl -s -X POST 'https://leetcode.cn/graphql/' \
+  -H 'Content-Type: application/json' \
+  -H 'User-Agent: Mozilla/5.0' \
+  -H 'x-csrftoken: lc' \
+  -H 'Cookie: csrftoken=lc' \
+  --data '{"query":"query questionData($titleSlug: String!) { question(titleSlug: $titleSlug) { questionId title difficulty content exampleTestcases metaData } }","variables":{"titleSlug":"SLUG"}}'
+```
 
 ### 2c. 内置知识（最终兜底）
 

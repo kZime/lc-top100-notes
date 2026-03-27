@@ -55,7 +55,7 @@ cd 0128_Longest_Consecutive_Sequence
 
 ---
 
-**6 / 100**
+**7 / 100**
 
 ---
 
@@ -64,7 +64,7 @@ cd 0128_Longest_Consecutive_Sequence
 | # | Title | Difficulty | Done | Notes |
 |---|-------|-----------|:----:|-------|
 | 11 | [Container With Most Water](0011_Container_With_Most_Water/problem.md) | Medium | ☑ | [笔记](0011_Container_With_Most_Water/notes.md) |
-| 15 | [3Sum](0015_3Sum/problem.md) | Medium | ☐ | |
+| 15 | [3Sum](0015_3Sum/problem.md) | Medium | ☑ | [笔记](0015_3Sum/notes.md) |
 | 42 | [Trapping Rain Water](0042_Trapping_Rain_Water/problem.md) | Hard | ☐ | |
 | 283 | [Move Zeroes](0283_Move_Zeroes/problem.md) | Easy | ☐ | |
 
