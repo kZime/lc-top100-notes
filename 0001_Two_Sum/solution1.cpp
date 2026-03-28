@@ -5,35 +5,17 @@ using namespace std;
 class Solution
 {
 public:
-    vector<int> twoSum(vector<int> &nums, int target)
-    {
-        unordered_map<int, vector<int>> key_idx;
-        for (int i = 0; i < nums.size(); i++)
-        {
-            key_idx[nums[i]].push_back(i);
-        }
-
-        for (int i = 0; i < nums.size(); i++)
-        {
-            int want = target - nums[i];
-            if (key_idx.find(want) != key_idx.end())
-            {
-                // edge case
-                if (nums[i] == want)
-                {
-                    if (key_idx[want].size() == 1)
-                        continue;
-                    else
-                    {
-                        return {key_idx[want][0], key_idx[want][1]};
-                    }
-                }
-
-                // Found here
-                return vector<int>({i, key_idx[want][0]});
+    vector<int> twoSum(vector<int> &nums, int target){
+        unordered_map<int, int> valIdx;
+        auto ans = {0, 0};
+        int n = nums.size();
+        for (int i = 0; i < n; i++) {
+            if (valIdx.count(target - nums[i])) {
+                return {valIdx[target - nums[i]], i};
             }
+            valIdx[nums[i]] = i;
         }
-        return vector<int>({0, 0});
+        return vector<int>(ans);
     }
 };
 
@@ -56,9 +38,9 @@ int main() {
 
     vector<TestCase> tests = {
         // Example 1
-        {{2, 7, 11, 15}, 9, {0, 1}},
-        // Example 2
         {{3, 2, 4}, 6, {1, 2}},
+        // Example 2
+        {{2, 7, 11, 15}, 9, {0, 1}},
         // Example 3
         {{3, 3}, 6, {0, 1}},
         // Edge: two elements

@@ -207,7 +207,7 @@ Remove unused imports if `sort` is not needed.
 
 ## Step 7 — Update README.md
 
-Find the row for this problem in `README.md`. The `Done` column should remain `☐` — the user marks it done after solving via `/lc-review`. No other changes needed.
+Find the row for this problem in `README.md`. The `Status` column should remain `☐` — the user marks it done after solving via `/lc-review`. No other changes needed.
 
 ---
 
