@@ -1,63 +1,23 @@
 # LeetCode Top 100 Liked — Progress
 
-个人刷题记录，覆盖 [LeetCode Top 100 Liked](https://leetcode.com/studyplan/top-100-liked/) 题单。每道题包含题面、C++ / Go 双语解法和复盘笔记。
-
----
-
-## 使用说明
-
-### 环境要求
-
-- C++17：`g++ -std=c++17`
-- Go 1.18+：`go run`
-- [Claude Code](https://claude.ai/code) CLI（使用 `/lc` 和 `/lc-review` skill）
-
-### 如何复用本项目
-
-1. Clone 仓库后，用 Claude Code 打开 `top100/` 目录。
-2. `.claude/commands/` 下已内置两个 skill，Claude Code 会自动加载。
-3. 按下方 skill 说明开始刷题即可。
-
-若不使用 Claude Code，可参考 `CLAUDE.md` 手动创建题目文件夹，按模板编写 `problem.md` 和 `solution.cpp` / `solution.go`。
-
----
-
-## Skill 说明
-
-### `/lc <题号 或 slug>`
-
-在 `top100/` 目录下运行，自动完成：
-
-1. 从 LeetCode 拉取题目数据（描述、示例、约束、函数签名）
-2. 创建 `NNNN_Problem_Title/` 文件夹
-3. 生成 `problem.md`（题面）
-4. 生成 `solution.cpp` 和 `solution.go`（含测试 harness，至少 5 个用例）
-
-```
-/lc 128
-/lc longest-consecutive-sequence
-```
-
-### `/lc-review`
-
-在**题目文件夹内**运行，完成做题复盘：
-
-1. 读取 `problem.md` 和所有 `solution*.cpp` / `solution*.go`
-2. 从 LeetCode CN 拉取高赞题解，提炼 2～3 种核心算法
-3. 分析你的解法属于哪种算法、是否有改进空间
-4. 生成 `notes.md` 复盘笔记
-5. 将 README 中该题的 Status 列更新为 ☑
-
-```bash
-cd 0128_Longest_Consecutive_Sequence
-/lc-review
-```
+个人刷题记录，覆盖 [LeetCode Top 100 Liked](https://leetcode.com/studyplan/top-100-liked/) 题单。每道题包含题面、C++ / Go 双语解法和复盘笔记。详见 [使用说明](USAGE.md)。
 
 ---
 
 状态：☑ 完成　⊙ 尝试中　☐ 未开始
 
-**8 / 100**
+**9 / 100**
+
+## 尝试中（6 题）
+
+| # | Title | Difficulty | Category |
+|---|-------|-----------|----------|
+| 42 | [Trapping Rain Water](0042_Trapping_Rain_Water/problem.md) | Hard | Two Pointers |
+| 283 | [Move Zeroes](0283_Move_Zeroes/problem.md) | Easy | Two Pointers |
+| 215 | [Kth Largest Element in an Array](0215_Kth_Largest_Element_in_an_Array/problem.md) | Medium | Heap |
+| 41 | [First Missing Positive](0041_First_Missing_Positive/problem.md) | Hard | Misc |
+| 233 | [Number of Digit One](0233_Number_of_Digit_One/problem.md) | Hard | Misc |
+| 1993 | [Operations on Tree](1993_Operations_on_Tree/problem.md) | Medium | Binary Tree |
 
 ---
 
@@ -74,11 +34,11 @@ cd 0128_Longest_Consecutive_Sequence
 
 | # | Title | Difficulty | Status | Notes |
 |---|-------|-----------|:------:|-------|
-| 283 | [Move Zeroes](0283_Move_Zeroes/problem.md) | Easy | ☐ | |
+| 283 | [Move Zeroes](0283_Move_Zeroes/problem.md) | Easy | ⊙ | |
 | 11 | [Container With Most Water](0011_Container_With_Most_Water/problem.md) | Medium | ☑ | [笔记](0011_Container_With_Most_Water/notes.md) |
 | 15 | [3Sum](0015_3Sum/problem.md) | Medium | ☑ | [笔记](0015_3Sum/notes.md) |
 | 75 | [Sort Colors](0075_Sort_Colors/problem.md) | Medium | ☐ | |
-| 42 | [Trapping Rain Water](0042_Trapping_Rain_Water/problem.md) | Hard | ☐ | |
+| 42 | [Trapping Rain Water](0042_Trapping_Rain_Water/problem.md) | Hard | ⊙ | |
 
 ## 3. Sliding Window
 
@@ -131,7 +91,7 @@ cd 0128_Longest_Consecutive_Sequence
 | # | Title | Difficulty | Status | Notes |
 |---|-------|-----------|:------:|-------|
 | 35 | [Search Insert Position](0035_Search_Insert_Position/problem.md) | Easy | ☐ | |
-| 33 | [Search in Rotated Sorted Array](0033_Search_in_Rotated_Sorted_Array/problem.md) | Medium | ☐ | |
+| 33 | [Search in Rotated Sorted Array](0033_Search_in_Rotated_Sorted_Array/problem.md) | Medium | ☑ | [笔记](0033_Search_in_Rotated_Sorted_Array/notes.md) |
 | 34 | [Find First and Last Position of Element in Sorted Array](0034_Find_First_and_Last_Position_of_Element_in_Sorted_Array/problem.md) | Medium | ☐ | |
 | 74 | [Search a 2D Matrix](0074_Search_a_2D_Matrix/problem.md) | Medium | ☐ | |
 | 153 | [Find Minimum in Rotated Sorted Array](0153_Find_Minimum_in_Rotated_Sorted_Array/problem.md) | Medium | ☐ | |
@@ -141,7 +101,7 @@ cd 0128_Longest_Consecutive_Sequence
 
 | # | Title | Difficulty | Status | Notes |
 |---|-------|-----------|:------:|-------|
-| 215 | [Kth Largest Element in an Array](0215_Kth_Largest_Element_in_an_Array/problem.md) | Medium | ☐ | |
+| 215 | [Kth Largest Element in an Array](0215_Kth_Largest_Element_in_an_Array/problem.md) | Medium | ⊙ | |
 | 347 | [Top K Frequent Elements](0347_Top_K_Frequent_Elements/problem.md) | Medium | ☐ | |
 | 295 | [Find Median from Data Stream](0295_Find_Median_from_Data_Stream/problem.md) | Hard | ☐ | |
 
@@ -228,4 +188,11 @@ cd 0128_Longest_Consecutive_Sequence
 | 208 | [Implement Trie (Prefix Tree)](0208_Implement_Trie/problem.md) | Medium | ☐ | |
 | 238 | [Product of Array Except Self](0238_Product_of_Array_Except_Self/problem.md) | Medium | ☐ | |
 | 287 | [Find the Duplicate Number](0287_Find_the_Duplicate_Number/problem.md) | Medium | ☐ | |
-| 41 | [First Missing Positive](0041_First_Missing_Positive/problem.md) | Hard | ☐ | |
+| 41 | [First Missing Positive](0041_First_Missing_Positive/problem.md) | Hard | ⊙ | |
+
+## 15. 其他题
+
+| # | Title | Difficulty | Status | Notes |
+|---|-------|-----------|:------:|-------|
+| 233 | [Number of Digit One](0233_Number_of_Digit_One/problem.md) | Hard |    ⊙    | |
+| 1993 | [Operations on Tree](1993_Operations_on_Tree/problem.md) | Medium | ⊙ | |

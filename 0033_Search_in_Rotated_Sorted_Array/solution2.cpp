@@ -6,49 +6,25 @@ using namespace std;
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-        int fst = nums.front(), lst = nums.back();
-        if (fst < lst) { // no rotated;
-            if (target < fst or target > lst) return -1;
-            int idx = lower_bound(nums.begin(), nums.end(), target) - nums.begin();
-            return nums[idx] == target ? idx : -1;
-        }
+        int l = 0, r = nums.size() - 1;
+        while (l < r) {
+            int mid = l + (r-l)/2; // l may == mid
+            if (nums[mid] == target) return mid;
 
-
-        // small case;
-        if (nums.size() <= 3) {
-            for (int i = 0; i < nums.size(); i++) {
-                if (nums[i] == target) return i;
-            }
-            return -1;
-        }
-
-        // find k;
-        int l = 0, r = nums.size()-1;
-
-        // 找到比 fst 大的最大的数
-        while (l+1 < r) { // avoid mid == l or r
-            int mid = (l+r) / 2;
-            if (nums[mid] > nums[l]) {
-                l = mid;
-            } else {
-                r = mid;
+            if (nums[l] <= nums[mid]) { // [l, mid] increase
+                if (nums[l] <= target && target <= nums[mid])
+                    r = mid - 1;
+                else
+                    l = mid + 1;
+            } else { // [mid, r] increase
+                if (nums[mid] <= target && target <= nums[r])
+                    l = mid + 1;
+                else
+                    r = mid - 1;
             }
         }
-        // l is k;
-        int k = l;
-        if (target > nums[l] or target < nums[r])
-            return -1;
-        if (target > lst and target < fst)
-            return -1;
-
-        if (target >= fst) {
-            int idx = lower_bound(nums.begin(), nums.begin()+r, target) - nums.begin();
-            return nums[idx] == target ? idx : -1;
-        } else { // target at right
-            int idx = lower_bound(nums.begin()+r, nums.end(), target) - nums.begin();
-            return nums[idx] == target ? idx : -1;
-        }
-
+        // 循环以 l < r 为条件，退出时 l==r，该位置从未被检查
+        return nums[l] == target ? l : -1;
     }
 };
 

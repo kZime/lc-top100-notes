@@ -1,11 +1,9 @@
-# Compiled C++ binaries (no extension)
+# Compiled C++ / Go binaries (no extension, macOS/Linux)
+# Matches: solution, solution1, solution2, ..., sol, sol1, sol2, ...
 **/solution
-**/solution2
-**/solution3
-**/solution4
-**/solution5
-**/solution6
+**/solution[0-9]
 **/sol
+**/sol[0-9]
 
-# Xcode debug symbols
+# Xcode debug symbol bundles
 **/*.dSYM/

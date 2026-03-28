@@ -207,7 +207,14 @@ Remove unused imports if `sort` is not needed.
 
 ## Step 7 — Update README.md
 
-Find the row for this problem in `README.md`. The `Status` column should remain `☐` — the user marks it done after solving via `/lc-review`. No other changes needed.
+Find the row for this problem in `README.md` and update the `Status` column to `⊙`.
+
+Then update the **"尝试中"** table near the top of `README.md`:
+- If this problem is not already in the table, add a row sorted by Category then by problem ID. Look up which section (e.g. "Two Pointers", "Binary Search", "Heap") this problem belongs to in the main README tables, and use that as the Category value:
+  `| <ID> | [<Title>](<folder>/problem.md) | <Difficulty> | <Category> |`
+- Update the table header count: `## 尝试中（N 题）`
+
+If the problem cannot be found in `README.md` (not in the top-100 list), add it to the `其他题` table and still add it to the 尝试中 table.
 
 ---
 
