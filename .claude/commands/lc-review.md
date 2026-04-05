@@ -12,6 +12,7 @@
 - 题目 URL slug（从 Link 行提取，如 `group-anagrams`）
 
 如果当前目录不是题目文件夹（没有 `problem.md`），则提示用户 `cd` 到对应题目目录后再运行。
+> **路径说明**：题目文件夹位于 `hot100/NNNN_*/`，因此 `README.md` 在上两级：`../../README.md`。
 
 ---
 

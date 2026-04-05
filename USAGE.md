@@ -44,6 +44,6 @@
 5. 若解法已是最优解，将 README 中该题的 Status 列更新为 `☑`，从"尝试中"表格移除，更新完成计数
 
 ```bash
-cd 0128_Longest_Consecutive_Sequence
+cd hot100/0128_Longest_Consecutive_Sequence
 /lc-review
 ```

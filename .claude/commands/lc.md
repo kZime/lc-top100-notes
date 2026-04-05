@@ -45,8 +45,8 @@ From whichever source succeeds, extract: `questionId`, `title`, `difficulty`, `c
 
 ## Step 3 — Create the folder
 
-Folder path: `<ID padded to 4 digits>_<Title_Words_Joined_By_Underscores>/`
-Example: `0128_Longest_Consecutive_Sequence/`
+Folder path: `hot100/<ID padded to 4 digits>_<Title_Words_Joined_By_Underscores>/`
+Example: `hot100/0128_Longest_Consecutive_Sequence/`
 
 If the folder already exists, inform the user and stop.
 
@@ -211,7 +211,7 @@ Find the row for this problem in `README.md` and update the `Status` column to `
 
 Then update the **"尝试中"** table near the top of `README.md`:
 - If this problem is not already in the table, add a row sorted by Category then by problem ID. Look up which section (e.g. "Two Pointers", "Binary Search", "Heap") this problem belongs to in the main README tables, and use that as the Category value:
-  `| <ID> | [<Title>](<folder>/problem.md) | <Difficulty> | <Category> |`
+  `| <ID> | [<Title>](hot100/<folder>/problem.md) | <Difficulty> | <Category> |`
 - Update the table header count: `## 尝试中（N 题）`
 
 If the problem cannot be found in `README.md` (not in the top-100 list), add it to the `其他题` table and still add it to the 尝试中 table.
