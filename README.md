@@ -8,13 +8,14 @@
 
 **9 / 100**
 
-## 尝试中（6 题）
+## 尝试中（7 题）
 
 | # | Title | Difficulty | Category |
 |---|-------|-----------|----------|
 | 42 | [Trapping Rain Water](0042_Trapping_Rain_Water/problem.md) | Hard | Two Pointers |
 | 283 | [Move Zeroes](0283_Move_Zeroes/problem.md) | Easy | Two Pointers |
 | 215 | [Kth Largest Element in an Array](0215_Kth_Largest_Element_in_an_Array/problem.md) | Medium | Heap |
+| 121 | [Best Time to Buy and Sell Stock](0121_Best_Time_to_Buy_and_Sell_Stock/problem.md) | Easy | Greedy |
 | 41 | [First Missing Positive](0041_First_Missing_Positive/problem.md) | Hard | Misc |
 | 233 | [Number of Digit One](0233_Number_of_Digit_One/problem.md) | Hard | Misc |
 | 1993 | [Operations on Tree](1993_Operations_on_Tree/problem.md) | Medium | Binary Tree |
@@ -137,7 +138,7 @@
 
 | # | Title | Difficulty | Status | Notes |
 |---|-------|-----------|:------:|-------|
-| 121 | [Best Time to Buy and Sell Stock](0121_Best_Time_to_Buy_and_Sell_Stock/problem.md) | Easy | ☐ | |
+| 121 | [Best Time to Buy and Sell Stock](0121_Best_Time_to_Buy_and_Sell_Stock/problem.md) | Easy | ⊙ | |
 | 45 | [Jump Game II](0045_Jump_Game_II/problem.md) | Medium | ☐ | |
 | 55 | [Jump Game](0055_Jump_Game/problem.md) | Medium | ☐ | |
 | 56 | [Merge Intervals](0056_Merge_Intervals/problem.md) | Medium | ☐ | |

@@ -7,3 +7,7 @@
 
 # Xcode debug symbol bundles
 **/*.dSYM/
+
+# Others
+**/tmp/
+
