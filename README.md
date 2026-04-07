@@ -1,6 +1,6 @@
 # LeetCode Top 100 Liked — Progress
 
-个人刷题记录，覆盖 [LeetCode Top 100 Liked](https://leetcode.com/studyplan/top-100-liked/) 题单。每道题包含题面、C++ / Go 双语解法和复盘笔记。详见 [使用说明](USAGE.md)。
+个人刷题记录，覆盖 [LeetCode Top 100 Liked](https://leetcode.com/studyplan/top-100-liked/) 题单。每道题包含题面、多种解法和复盘笔记。详见 [使用说明](USAGE.md)。
 
 ---
 
