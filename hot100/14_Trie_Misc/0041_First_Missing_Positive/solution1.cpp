@@ -12,21 +12,16 @@ class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
         // thought:
-        // turn all <= 0 to n+1
-        // use sign of nums as bucket
+        // cyclic sort: place each num at its correct index
         int n = nums.size();
         for (int& a: nums) {
-            if (a <= 0) a = n+1;
-        }
-        for (int i = 0; i < n; i++) {
-            int a = abs(nums[i]);
-            if (a <= n) { // legal
-                nums[a-1] = -abs(nums[a-1]); // nums[i] < 0 ==> has i+1
-            }
+            while (1<=a && a<=n && a != nums[a-1])
+                swap(a, nums[a-1]);
         }
 
         for (int i = 0; i < n; i++) {
-            if (nums[i] > 0) return i+1;
+            if (nums[i] != i+1)
+                return i+1;
         }
         return n+1; // has all [1, n]
     }

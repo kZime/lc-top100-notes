@@ -46,7 +46,7 @@ def set_status_in_main_table(lines, pid, new_status, notes_link=""):
             # parts: ['', '#', 'Title', 'Difficulty', 'Status', 'Notes', '']
             if len(parts) >= 6:
                 parts[4] = f" {new_status} "
-                parts[5] = f" {notes_link} " if notes_link else " "
+                parts[5] = f" [笔记]({notes_link}) " if notes_link else " "
             lines[i] = "|".join(parts)
     return lines
 

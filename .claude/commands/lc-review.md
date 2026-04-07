@@ -2,13 +2,14 @@
 
 ## 步骤一：读题 & 读代码
 
-1. 读 `problem.md`，提取题号、题名、slug（Link 行末段）。若无 `problem.md` 则提示用户 cd 到题目目录。
+1. 若有 ARGUMENTS，用 Glob 模式 `**/0<NNNN>*/problem.md`（零填充到4位）定位题目文件夹，例如参数为 `41` 则搜索 `**/0041*/problem.md`。找到后读取该路径的 `problem.md`
 2. 列出解法文件：
    ```bash
-   ls solution*.cpp solution*.go 2>/dev/null | sort
+   ls solution*.cpp solution*.go note.md 2>/dev/null | sort
    ```
-3. 对每个文件：用 Grep 定位 Solution 类/函数的起止行，再 Read offset+limit 只取该段（跳过 test harness）。若文件含 `TODO: implement` 则跳过。
+3. 对每个代码文件：用 Grep 定位 Solution 类/函数的起止行，再 Read offset+limit 只取该段（跳过 test harness）。若文件含 `TODO: implement` 则跳过。
 4. 若所有文件均为 TODO，停止并提示用户先实现代码。
+**notes.md 已存在时**：若有未分析过的新解法文件，追加 `## 我的解法（solutionN.cpp）`, 然后跳到步骤5
 
 ## 步骤二：拉取高赞题解
 

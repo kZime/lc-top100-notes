@@ -1,8 +1,12 @@
 Set up a LeetCode problem workspace. Argument: $ARGUMENTS (problem number, e.g. `128`, or URL slug).
 
-## 步骤一：解析 slug
+## 步骤一：解析 slug & 判断是否为编外题
 
 若 $ARGUMENTS 是数字，grep README.md 找到该题行，从链接路径提取文件夹名推断 slug（链接格式为 `hot100/NN_Category/NNNN_Folder/problem.md`，取最后一个路径段推断 slug，如 `0128_Longest_Consecutive_Sequence` → `longest-consecutive-sequence`）。若已是 slug，直接使用。
+
+**同时判断是否为编外题**：搜索 README.md 各章节（`## 1.` 到 `## 14.` 的表格行）是否包含该题号。
+- 找到 → `EXTRA=false`，记录所在章节名（用于步骤三和六）
+- 未找到（不在 top-100 题单中）→ `EXTRA=true`
 
 ## 步骤二：拉取题目数据
 
@@ -15,7 +19,7 @@ bash .claude/scripts/lc_fetch.sh SLUG
 
 ## 步骤三：确定分类目录 & 创建文件夹
 
-从 README.md 中找到该题所在章节（如 `## 2. Two Pointers`），映射到对应分类子目录：
+**若 `EXTRA=false`**：从 README.md 中找到该题所在章节（如 `## 2. Two Pointers`），映射到对应分类子目录：
 
 | 章节 | 子目录 |
 |------|--------|
@@ -33,10 +37,13 @@ bash .claude/scripts/lc_fetch.sh SLUG
 | 12. Backtracking | `12_Backtracking` |
 | 13. Dynamic Programming | `13_Dynamic_Programming` |
 | 14. Trie + Misc | `14_Trie_Misc` |
-| 15. 其他题 | `15_Others` |
 
 创建文件夹：`hot100/<NN_Category>/<ID四位补零>_<Title_Words_By_Underscore>/`
-若已存在则告知用户并停止。
+
+**若 `EXTRA=true`（编外题）**：一律使用 `15_Others` 子目录，不论算法类型。
+创建文件夹：`hot100/15_Others/<ID四位补零>_<Title_Words_By_Underscore>/`
+
+若文件夹已存在则告知用户并停止。
 
 ## 步骤四：生成 problem.md
 
@@ -60,9 +67,22 @@ bash .claude/scripts/lc_fetch.sh SLUG
 
 ## 步骤六：更新 README
 
-从 README.md 的章节标题推断 Category（如题目在"## 2. Two Pointers"节下 → `Two Pointers`）。
+**若 `EXTRA=false`**：从所在章节名推断 Category（如 `## 2. Two Pointers` → `Two Pointers`）。
 
 ```bash
 python3 .claude/scripts/lc_readme_update.py start README.md \
   <id> "<title>" "<difficulty>" "<category>" "hot100/<NN_Category>/<folder>/problem.md"
 ```
+
+**若 `EXTRA=true`（编外题）**：
+
+1. 先在 README 的 `## 15. 其他题` 表格末尾手动追加一行（Status 为 `☐`）：
+   ```
+   | <id> | [<title>](hot100/15_Others/<folder>/problem.md) | <difficulty> | ☐ | |
+   ```
+
+2. 再执行脚本（category 填算法类型，如 `Dynamic Programming`），将状态置为 ⊙ 并加入"尝试中"表：
+   ```bash
+   python3 .claude/scripts/lc_readme_update.py start README.md \
+     <id> "<title>" "<difficulty>" "<category>" "hot100/15_Others/<folder>/problem.md"
+   ```

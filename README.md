@@ -6,17 +6,14 @@
 
 状态：☑ 完成　⊙ 尝试中　☐ 未开始
 
-**12 / 100**
+**20 / 100**
 
-## 尝试中（5 题）
+## 尝试中（2 题）
 
 | # | Title | Difficulty | Category |
 |---|-------|-----------|----------|
-| 215 | [Kth Largest Element in an Array](hot100/08_Heap/0215_Kth_Largest_Element_in_an_Array/problem.md) | Medium | Heap |
-| 41 | [First Missing Positive](hot100/14_Trie_Misc/0041_First_Missing_Positive/problem.md) | Hard | Misc |
 | 233 | [Number of Digit One](hot100/15_Others/0233_Number_of_Digit_One/problem.md) | Hard | Misc |
 | 1993 | [Operations on Tree](hot100/15_Others/1993_Operations_on_Tree/problem.md) | Medium | Binary Tree |
-| 122 | [Best Time to Buy and Sell Stock II](hot100/11_Greedy/0122_Best_Time_to_Buy_and_Sell_Stock_II/problem.md) | Medium | Greedy |
 
 ---
 
@@ -31,13 +28,13 @@
 
 ## 2. Two Pointers
 
-| # | Title | Difficulty | Status | Notes |
-|---|-------|-----------|:------:|-------|
-| 283 | [Move Zeroes](hot100/02_Two_Pointers/0283_Move_Zeroes/problem.md) | Easy | ☑ | [笔记](hot100/02_Two_Pointers/0283_Move_Zeroes/notes.md) |
+| # | Title | Difficulty | Status | Notes                                                                |
+|---|-------|-----------|:------:|----------------------------------------------------------------------|
+| 283 | [Move Zeroes](hot100/02_Two_Pointers/0283_Move_Zeroes/problem.md) | Easy | ☑ | [笔记](hot100/02_Two_Pointers/0283_Move_Zeroes/notes.md)               |
 | 11 | [Container With Most Water](hot100/02_Two_Pointers/0011_Container_With_Most_Water/problem.md) | Medium | ☑ | [笔记](hot100/02_Two_Pointers/0011_Container_With_Most_Water/notes.md) |
-| 15 | [3Sum](hot100/02_Two_Pointers/0015_3Sum/problem.md) | Medium | ☑ | [笔记](hot100/02_Two_Pointers/0015_3Sum/notes.md) |
-| 75 | [Sort Colors](hot100/02_Two_Pointers/0075_Sort_Colors/problem.md) | Medium | ☐ | |
-| 42 | [Trapping Rain Water](hot100/02_Two_Pointers/0042_Trapping_Rain_Water/problem.md) | Hard | ☑ | hot100/02_Two_Pointers/0042_Trapping_Rain_Water/notes.md |
+| 15 | [3Sum](hot100/02_Two_Pointers/0015_3Sum/problem.md) | Medium | ☑ | [笔记](hot100/02_Two_Pointers/0015_3Sum/notes.md)                      |
+| 75 | [Sort Colors](hot100/02_Two_Pointers/0075_Sort_Colors/problem.md) | Medium | ☑ | [笔记](hot100/02_Two_Pointers/0075_Sort_Colors/notes.md) |
+| 42 | [Trapping Rain Water](hot100/02_Two_Pointers/0042_Trapping_Rain_Water/problem.md) | Hard | ☑ | [笔记](hot100/02_Two_Pointers/0042_Trapping_Rain_Water/notes.md)       |
 
 ## 3. Sliding Window
 
@@ -98,11 +95,11 @@
 
 ## 8. Heap
 
-| # | Title | Difficulty | Status | Notes |
-|---|-------|-----------|:------:|-------|
-| 215 | [Kth Largest Element in an Array](hot100/08_Heap/0215_Kth_Largest_Element_in_an_Array/problem.md) | Medium | ⊙ | |
-| 347 | [Top K Frequent Elements](hot100/08_Heap/0347_Top_K_Frequent_Elements/problem.md) | Medium | ☐ | |
-| 295 | [Find Median from Data Stream](hot100/08_Heap/0295_Find_Median_from_Data_Stream/problem.md) | Hard | ☐ | |
+| # | Title | Difficulty | Status | Notes                                                              |
+|---|-------|-----------|:------:|--------------------------------------------------------------------|
+| 215 | [Kth Largest Element in an Array](hot100/08_Heap/0215_Kth_Largest_Element_in_an_Array/problem.md) | Medium | ☑ | [笔记](hot100/08_Heap/0215_Kth_Largest_Element_in_an_Array/notes.md) |
+| 347 | [Top K Frequent Elements](hot100/08_Heap/0347_Top_K_Frequent_Elements/problem.md) | Medium | ☐ |                                                                    |
+| 295 | [Find Median from Data Stream](hot100/08_Heap/0295_Find_Median_from_Data_Stream/problem.md) | Hard | ☐ |                                                                    |
 
 ## 9. Binary Tree
 
@@ -136,7 +133,7 @@
 
 | # | Title | Difficulty | Status | Notes |
 |---|-------|-----------|:------:|-------|
-| 121 | [Best Time to Buy and Sell Stock](hot100/11_Greedy/0121_Best_Time_to_Buy_and_Sell_Stock/problem.md) | Easy | ☑ | hot100/11_Greedy/0121_Best_Time_to_Buy_and_Sell_Stock/notes.md |
+| 121 | [Best Time to Buy and Sell Stock](hot100/11_Greedy/0121_Best_Time_to_Buy_and_Sell_Stock/problem.md) | Easy | ☑ | [笔记](hot100/11_Greedy/0121_Best_Time_to_Buy_and_Sell_Stock/notes.md) |
 | 45 | [Jump Game II](hot100/11_Greedy/0045_Jump_Game_II/problem.md) | Medium | ☐ | |
 | 55 | [Jump Game](hot100/11_Greedy/0055_Jump_Game/problem.md) | Medium | ☐ | |
 | 56 | [Merge Intervals](hot100/11_Greedy/0056_Merge_Intervals/problem.md) | Medium | ☐ | |
@@ -157,17 +154,23 @@
 
 ## 13. Dynamic Programming
 
+- 线性 dp: 70, 198, 118  
+- 二维路径 dp: 62, 64  
+- 背包 dp: 322, 279, 416  
+- 字符串区间 dp: 5, 72, 139, 1143  
+- 子序列子数组 dp: 300, 152, 32
+
 | # | Title | Difficulty | Status | Notes |
 |---|-------|-----------|:------:|-------|
-| 70 | [Climbing Stairs](hot100/13_Dynamic_Programming/0070_Climbing_Stairs/problem.md) | Easy | ☐ | |
-| 118 | [Pascal's Triangle](hot100/13_Dynamic_Programming/0118_Pascals_Triangle/problem.md) | Easy | ☐ | |
+| 70 | [Climbing Stairs](hot100/13_Dynamic_Programming/0070_Climbing_Stairs/problem.md) | Easy | ☑ | [笔记](hot100/13_Dynamic_Programming/0070_Climbing_Stairs/notes.md) |
+| 198 | [House Robber](hot100/13_Dynamic_Programming/0198_House_Robber/problem.md) | Medium | ☑ | [笔记](hot100/13_Dynamic_Programming/0198_House_Robber/notes.md) |
+| 118 | [Pascal's Triangle](hot100/13_Dynamic_Programming/0118_Pascals_Triangle/problem.md) | Easy | ☑ | [笔记](hot100/13_Dynamic_Programming/0118_Pascals_Triangle/notes.md) |
 | 5 | [Longest Palindromic Substring](hot100/13_Dynamic_Programming/0005_Longest_Palindromic_Substring/problem.md) | Medium | ☐ | |
 | 62 | [Unique Paths](hot100/13_Dynamic_Programming/0062_Unique_Paths/problem.md) | Medium | ☐ | |
 | 64 | [Minimum Path Sum](hot100/13_Dynamic_Programming/0064_Minimum_Path_Sum/problem.md) | Medium | ☐ | |
 | 72 | [Edit Distance](hot100/13_Dynamic_Programming/0072_Edit_Distance/problem.md) | Medium | ☐ | |
 | 139 | [Word Break](hot100/13_Dynamic_Programming/0139_Word_Break/problem.md) | Medium | ☐ | |
 | 152 | [Maximum Product Subarray](hot100/13_Dynamic_Programming/0152_Maximum_Product_Subarray/problem.md) | Medium | ☐ | |
-| 198 | [House Robber](hot100/13_Dynamic_Programming/0198_House_Robber/problem.md) | Medium | ☐ | |
 | 279 | [Perfect Squares](hot100/13_Dynamic_Programming/0279_Perfect_Squares/problem.md) | Medium | ☐ | |
 | 300 | [Longest Increasing Subsequence](hot100/13_Dynamic_Programming/0300_Longest_Increasing_Subsequence/problem.md) | Medium | ☐ | |
 | 322 | [Coin Change](hot100/13_Dynamic_Programming/0322_Coin_Change/problem.md) | Medium | ☐ | |
@@ -187,7 +190,7 @@
 | 208 | [Implement Trie (Prefix Tree)](hot100/14_Trie_Misc/0208_Implement_Trie/problem.md) | Medium | ☐ | |
 | 238 | [Product of Array Except Self](hot100/14_Trie_Misc/0238_Product_of_Array_Except_Self/problem.md) | Medium | ☐ | |
 | 287 | [Find the Duplicate Number](hot100/14_Trie_Misc/0287_Find_the_Duplicate_Number/problem.md) | Medium | ☐ | |
-| 41 | [First Missing Positive](hot100/14_Trie_Misc/0041_First_Missing_Positive/problem.md) | Hard | ⊙ | |
+| 41 | [First Missing Positive](hot100/14_Trie_Misc/0041_First_Missing_Positive/problem.md) | Hard | ☑ | [笔记](hot100/14_Trie_Misc/0041_First_Missing_Positive/notes.md) |
 
 ## 15. 其他题
 
@@ -195,3 +198,5 @@
 |---|-------|-----------|:------:|-------|
 | 233 | [Number of Digit One](hot100/15_Others/0233_Number_of_Digit_One/problem.md) | Hard |    ⊙    | |
 | 1993 | [Operations on Tree](hot100/15_Others/1993_Operations_on_Tree/problem.md) | Medium | ⊙ | |
+| 122 | [Best Time to Buy and Sell Stock II](hot100/15_Others/0122_Best_Time_to_Buy_and_Sell_Stock_II/problem.md) | Medium | ☑ | [笔记](hot100/15_Others/0122_Best_Time_to_Buy_and_Sell_Stock_II/notes.md) |
+| 123 | [Best Time to Buy and Sell Stock III](hot100/15_Others/0123_Best_Time_to_Buy_and_Sell_Stock_III/problem.md) | Hard | ☑ | [笔记](hot100/15_Others/0123_Best_Time_to_Buy_and_Sell_Stock_III/notes.md) |

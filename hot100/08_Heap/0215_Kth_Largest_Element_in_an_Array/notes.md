@@ -46,6 +46,30 @@
 
 ---
 
+### [solution2.cpp](solution2.cpp) — 随机化快速选择（两路划分）
+
+**判断依据**：
+- 将"第 k 大"转化为升序排列下下标 `target = n - k` 处的元素。
+- 随机选 pivot 后进行两路划分：`<= pivot` 的元素交换到左侧，`> pivot` 的保留右侧。pivot 归位后比较 `target` 与 pivot 下标，向对应一侧递归。
+- 对应**算法三（随机化快速选择）的简化版**，但使用了两路（非三路）划分。
+
+**可改进点**：
+1. **两路划分在大量重复元素时退化**：当数组中有大量等于 pivot 的元素时，每轮划分极度不均（所有等于 pivot 的元素全部划入同一侧），导致递归深度 O(n)，整体退化为 O(n²)。作者注释已标注 `// TLE at many same elements`，确认了此问题。使用三路划分（见 `solution3.cpp`）可彻底解决。
+
+### [solution3.cpp](solution3.cpp) — 随机化快速选择（三路划分）
+
+**判断依据**：
+- 同样将"第 k 大"转化为下标 `target = n - k` 处的元素。
+- 随机选 pivot 后执行**荷兰国旗三路划分**：`lit`/`i`/`rit` 将数组切为 `< pivot`、`== pivot`、`> pivot` 三段（`[l, lit)` 全小于，`[lit, rit]` 全等于，`(rit, r]` 全大于）。 
+- 若 `lit <= target <= rit` 则 `target` 落在等于区，直接返回 `pivot`；否则向小于区或大于区递归。
+- 这是**算法三（随机化快速选择 + 三路划分）的完整标准实现**，是面试中该类题的"标准答案"。
+
+**可改进点**：
+- 已是随机化快速选择的最优写法，无明显改进点。
+- 与 `solution1.cpp`（BFPRT）相比：两者期望复杂度均为 O(n)，但 BFPRT 有**最坏 O(n) 保证**，而本方案最坏 O(n²)（随机化后概率极低）；在实际 LeetCode 随机数据上本方案常数更小、跑得更快。
+
+---
+
 ## 参考链接
 
 https://leetcode.cn/problems/kth-largest-element-in-an-array/solutions/?envType=study-plan-v2&envId=top-100-liked

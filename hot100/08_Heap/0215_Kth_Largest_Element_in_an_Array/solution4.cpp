@@ -7,29 +7,18 @@ using namespace std;
 #define RST "\033[0m"
 
 // ─── Solution ────────────────────────────────────────────────────────────────
-
 class Solution {
 public:
-    int firstMissingPositive(vector<int>& nums) {
-        // thought:
-        // turn all <= 0 to n+1
-        // use sign of nums as bucket
-        int n = nums.size();
-        for (int& a: nums) {
-            if (a <= 0) a = n+1;
-        }
-        for (int i = 0; i < n; i++) {
-            int a = abs(nums[i]);
-            if (a <= n) { // legal
-                nums[a-1] = -abs(nums[a-1]); // nums[i] < 0 ==> has i+1
-            }
-        }
 
-        for (int i = 0; i < n; i++) {
-            if (nums[i] > 0) return i+1;
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int, vector<int>, greater<> > qk;
+        for (auto a : nums) {
+            qk.push(a);
+            if (qk.size() > k) qk.pop();
         }
-        return n+1; // has all [1, n]
+        return qk.top();
     }
+
 };
 
 // ─── Test Harness ─────────────────────────────────────────────────────────────
@@ -50,27 +39,24 @@ int main() {
     };
 
     // Examples from problem
-    vector<int> v1 = {1,2,0};
-    check(sol.firstMissingPositive(v1), 3, "example1: [1,2,0]");
+    vector<int> v1 = {3,2,1,5,6,4};
+    check(sol.findKthLargest(v1, 2), 5, "example1: [3,2,1,5,6,4] k=2");
 
-    vector<int> v2 = {3,4,-1,1};
-    check(sol.firstMissingPositive(v2), 2, "example2: [3,4,-1,1]");
-
-    vector<int> v3 = {7,8,9,11,12};
-    check(sol.firstMissingPositive(v3), 1, "example3: [7,8,9,11,12]");
+    vector<int> v2 = {3,2,3,1,2,4,5,5,6};
+    check(sol.findKthLargest(v2, 4), 4, "example2: [3,2,3,1,2,4,5,5,6] k=4");
 
     // Edge cases
-    vector<int> v4 = {1};
-    check(sol.firstMissingPositive(v4), 2, "single element [1]");
+    vector<int> v3 = {1};
+    check(sol.findKthLargest(v3, 1), 1, "single element");
 
-    vector<int> v5 = {2};
-    check(sol.firstMissingPositive(v5), 1, "single element [2]");
+    vector<int> v4 = {5,5,5,5};
+    check(sol.findKthLargest(v4, 2), 5, "all same elements");
 
-    vector<int> v6 = {1,2,3,4,5};
-    check(sol.firstMissingPositive(v6), 6, "consecutive from 1");
+    vector<int> v5 = {-1,-2,-3,-4,-5};
+    check(sol.findKthLargest(v5, 1), -1, "all negative, k=1");
 
-    vector<int> v7 = {-5,-1,0};
-    check(sol.firstMissingPositive(v7), 1, "all non-positive");
+    vector<int> v6 = {2,1};
+    check(sol.findKthLargest(v6, 2), 1, "two elements, k=2 (smallest)");
 
     printf("\n%s\n", string(44, '-').c_str());
     if (passed == total)
