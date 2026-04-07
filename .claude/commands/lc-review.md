@@ -1,158 +1,46 @@
-对当前题目完成做题复盘：拉取 LeetCode CN 高赞题解，提炼核心算法，分析用户代码，生成题解笔记。
+对当前题目完成做题复盘。全程使用**中文**。
 
-全程使用**中文**。
+## 步骤一：读题 & 读代码
 
----
+1. 读 `problem.md`，提取题号、题名、slug（Link 行末段）。若无 `problem.md` 则提示用户 cd 到题目目录。
+2. 列出解法文件：
+   ```bash
+   ls solution*.cpp solution*.go 2>/dev/null | sort
+   ```
+3. 对每个文件：用 Grep 定位 Solution 类/函数的起止行，再 Read offset+limit 只取该段（跳过 test harness）。若文件含 `TODO: implement` 则跳过。
+4. 若所有文件均为 TODO，停止并提示用户先实现代码。
 
-## 第一步【自动】读取题目信息
-
-读取当前题目文件夹内的 `problem.md`，提取：
-- 题号（如 `49`）
-- 题目名称（如 `Group Anagrams`）
-- 题目 URL slug（从 Link 行提取，如 `group-anagrams`）
-
-如果当前目录不是题目文件夹（没有 `problem.md`），则提示用户 `cd` 到对应题目目录后再运行。
-> **路径说明**：题目文件夹位于 `hot100/NNNN_*/`，因此 `README.md` 在上两级：`../../README.md`。
-
----
-
-## 第二步【自动】读取用户代码
-
-首先用以下命令发现题目文件夹内所有解法文件：
+## 步骤二：拉取高赞题解
 
 ```bash
-ls solution*.cpp solution*.go 2>/dev/null | sort
+bash .claude/scripts/lc_cn_solutions.sh SLUG
 ```
 
-将输出的所有文件全部读取（如 `solution.cpp`、`solution2.cpp`、`solution3.cpp`、`solution.go` 等，数量不限）。每份文件视为一份独立解法，按文件名编号区分。
+输出前 3 篇题解的纯文本（含标题和点赞数），最多 3000 字符。
+若输出 `FETCH_FAILED`，改用 WebFetch 抓 `https://leetcode.cn/problems/SLUG/solutions/?envType=study-plan-v2&envId=top-100-liked`。
+若仍失败，用内置知识并在 notes.md 中注明。
 
-只读 Solution 类/函数部分，忽略测试 harness。
+## 步骤三：提炼算法 & 分析用户代码
 
-**重要检查**：如果所有读到的解法函数体均仍然是 `// TODO: implement`（即用户尚未实现任何解法），立即停止并提示：
-> "你还没有实现解法，请先完成代码再运行复盘。"
+**提炼**：从题解中选 2～3 种最具代表性的算法，**按复杂度从高到低排列**（算法一最朴素，末尾最优）。每种写：核心思路（2～4 句）、时间/空间复杂度。不贴代码。
 
----
+**分析**：将用户代码与各算法对比，判断最接近哪种并写出依据。若有改进空间（复杂度或实现）指出 1～2 点；若已最优明确说明。
 
-## 第三步【自动】从 LeetCode CN 拉取高赞题解
+## 步骤四：生成 notes.md
 
-按以下顺序尝试，成功即停止：
+参照 `.claude/templates/notes_template.md` 的结构生成文件。
 
-### 3a. CN GraphQL（首选）
+**notes.md 已存在时**：若有未分析过的新解法文件，追加 `## 我的解法（solutionN.cpp）` 小节；若无新文件，询问用户是否覆盖。
 
+## 步骤五：更新 README
+
+> README 路径：`../../../README.md`（相对题目文件夹，结构为 `hot100/<NN_Category>/<folder>/`）
+
+**☑ 条件**：复杂度与最优方案一致且无明显改进点：
 ```bash
-curl -s -X POST 'https://leetcode.cn/graphql/' \
-  -H 'Content-Type: application/json' \
-  -H 'User-Agent: Mozilla/5.0' \
-  --data '{
-    "query": "query { questionSolutionArticles(questionSlug: \"SLUG\", first: 5, orderBy: HOT) { edges { node { title upvoteCount content } } } }"
-  }'
+CATEGORY=$(basename $(dirname $(pwd)))
+python3 ../../../.claude/scripts/lc_readme_update.py finish ../../../README.md \
+  <id> "hot100/$CATEGORY/<folder>/notes.md"
 ```
 
-取 `upvoteCount` 最高的前 5 篇题解的 `title` + `content`。
-
-### 3b. WebFetch CN 题解页（网络兜底）
-
-用 `WebFetch` 工具抓取：
-`https://leetcode.cn/problems/SLUG/solutions/?envType=study-plan-v2&envId=top-100-liked`
-
-从页面内容中提取高赞题解的核心思路。
-
-### 3c. 内置知识（最终兜底）
-
-如果网络全部失败，基于内置知识总结该题最经典的 2～3 种算法思路。**在 notes.md 中注明**"题解来自内置知识，非实时抓取"。
-
----
-
-## 第四步【需要仔细思考】提炼核心算法
-
-**这一步需要认真分析，不要走马观花。**
-
-从获取到的题解中：
-1. 识别所有不同的算法思路（去掉重复的、只换语言的版本）
-2. 按质量和代表性选出 **2～3 种最值得掌握的算法**
-3. **按复杂度从高到低排列**：算法一为最暴力/朴素解法，算法二、三依次为优化方案，最后一个算法为最优解
-4. 对每种算法，用**简洁中文**概括：
-   - 核心思路（2～4 句话，抓住本质，不抄原文）
-   - 时间复杂度 / 空间复杂度
-   - 适用场景或关键洞察（可选，若有明显亮点则写）
-
-不需要贴代码，只需要文字描述核心思路。
-
----
-
-## 第五步【需要仔细思考】分析用户代码
-
-**这一步需要认真对比，不要猜测。**
-
-将第二步读到的用户代码与第四步整理的算法逐一对比：
-- 判断用户代码最接近哪种算法
-- 写出判断依据（关键数据结构、关键操作）
-- 如果用户代码有可优化之处（时间/空间/可读性），简要指出 1～2 点；如果已经是最优，明确说明
-
----
-
-## 第六步【自动】生成 `notes.md`
-
-在题目文件夹内创建 `notes.md`，格式如下：
-
-```markdown
-# <题号>. <题目名称> — 题解笔记
-
-## 题意
-
-用 1～3 句话概括题目要求：输入是什么、输出是什么、核心限制是什么。不要复述约束列表，抓住"题目本质上在问什么"。
-
-## 核心算法
-
-### 算法一：<名称>
-**思路**：...
-**时间**：O(...)　**空间**：O(...)
-
-### 算法二：<名称>
-**思路**：...
-**时间**：O(...)　**空间**：O(...)
-
-<!-- 如有第三种 -->
-### 算法三：<名称>
-**思路**：...
-**时间**：O(...)　**空间**：O(...)
-
----
-
-## 我的解法
-
-### [solutionN.cpp](solutionN.cpp) — 算法X：<名称>
-**判断依据**：...
-**可改进点**：...（或"已是该算法的标准实现，无明显改进点"）
-
-<!-- 若有多个解法文件，每个单独一个 ### 小节，文件名用相对链接 -->
-<!-- 示例：### [solution2.cpp](solution2.cpp) — 算法二：排序 + 双指针 -->
-
----
-
-## 参考链接
-
-https://leetcode.cn/problems/<slug>/solutions/?envType=study-plan-v2&envId=top-100-liked
-```
-
-**notes.md 已存在时的处理规则**：
-
-- 比较当前发现的解法文件列表与 notes.md 中已出现的文件名。若存在 notes.md 中**未分析过**的解法文件（如新增了 `solution3.cpp`），**不覆盖**已有 notes.md，而是将新解法的分析以追加方式写入，格式为独立小节 `## 我的解法（solutionN.cpp）`。
-- 如果所有当前文件均已在 notes.md 中分析过（无新文件），询问用户是否覆盖重写。
-
----
-
-## 最后【自动】更新 README.md
-
-**Status 列更新规则（严格执行）**：
-
-- 若用户的解法**已是最优解**（时间/空间复杂度与高赞题解最优方案一致，无明显改进点）：将 `Status` 列改为 `☑`，并更新顶部进度数字。
-- 若用户的解法**不是最优解**（存在更优的时间或空间方案，或实现有明显 bug 未修复）：`Status` 列**保持 `⊙` 不变**，不更新进度数字。在 notes.md 的"可改进点"中已注明原因即可。
-
-> 不要因为"用户写了代码"就打 ☑。☑ 代表"已用最优解解决"，不是"已尝试"。
-
-进度行格式：`**N / 100**`，N 为当前所有 `☑` 的数量。
-
-若本次将 Status 改为 `☑`：
-- 从 README 顶部的 **"尝试中"** 表格中删除该题所在行
-- 将表格标题中的题数减一：`## 尝试中（N 题）`
+**⊙ 条件**：存在更优方案或有明显 bug，不改状态，不执行脚本。
