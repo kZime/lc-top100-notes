@@ -6,14 +6,15 @@
 
 状态：☑ 完成　⊙ 尝试中　☐ 未开始
 
-**20 / 100**
+**24 / 100**
 
-## 尝试中（2 题）
+## 尝试中（3 题）
 
 | # | Title | Difficulty | Category |
 |---|-------|-----------|----------|
 | 233 | [Number of Digit One](hot100/15_Others/0233_Number_of_Digit_One/problem.md) | Hard | Misc |
 | 1993 | [Operations on Tree](hot100/15_Others/1993_Operations_on_Tree/problem.md) | Medium | Binary Tree |
+| 146 | [LRU Cache](hot100/05_Linked_Lists/0146_LRU_Cache/problem.md) | Medium | Linked Lists |
 
 ---
 
@@ -40,10 +41,10 @@
 
 | # | Title | Difficulty | Status | Notes |
 |---|-------|-----------|:------:|-------|
-| 3 | [Longest Substring Without Repeating Characters](hot100/03_Sliding_Window/0003_Longest_Substring_Without_Repeating_Characters/problem.md) | Medium | ☐ | |
-| 438 | [Find All Anagrams in a String](hot100/03_Sliding_Window/0438_Find_All_Anagrams_in_a_String/problem.md) | Medium | ☐ | |
-| 76 | [Minimum Window Substring](hot100/03_Sliding_Window/0076_Minimum_Window_Substring/problem.md) | Hard | ☐ | |
-| 239 | [Sliding Window Maximum](hot100/03_Sliding_Window/0239_Sliding_Window_Maximum/problem.md) | Hard | ☐ | |
+| 3 | [Longest Substring Without Repeating Characters](hot100/03_Sliding_Window/0003_Longest_Substring_Without_Repeating_Characters/problem.md) | Medium | ☑ | [笔记](hot100/find_job_obs/0003_Longest_Substring_Without_Repeating_Characters/notes.md) |
+| 438 | [Find All Anagrams in a String](hot100/03_Sliding_Window/0438_Find_All_Anagrams_in_a_String/problem.md) | Medium | ☑ | [笔记](hot100/find_job_obs/0438_Find_All_Anagrams_in_a_String/notes.md) |
+| 76 | [Minimum Window Substring](hot100/03_Sliding_Window/0076_Minimum_Window_Substring/problem.md) | Hard | ☑ | [笔记](hot100/find_job_obs/0076_Minimum_Window_Substring/notes.md) |
+| 239 | [Sliding Window Maximum](hot100/03_Sliding_Window/0239_Sliding_Window_Maximum/problem.md) | Hard | ☑ | [笔记](hot100/find_job_obs/0239_Sliding_Window_Maximum/notes.md) |
 
 ## 4. Stack
 
@@ -68,7 +69,7 @@
 | 24 | [Swap Nodes in Pairs](hot100/05_Linked_Lists/0024_Swap_Nodes_in_Pairs/problem.md) | Medium | ☐ | |
 | 138 | [Copy List with Random Pointer](hot100/05_Linked_Lists/0138_Copy_List_with_Random_Pointer/problem.md) | Medium | ☐ | |
 | 142 | [Linked List Cycle II](hot100/05_Linked_Lists/0142_Linked_List_Cycle_II/problem.md) | Medium | ☐ | |
-| 146 | [LRU Cache](hot100/05_Linked_Lists/0146_LRU_Cache/problem.md) | Medium | ☐ | |
+| 146 | [LRU Cache](hot100/05_Linked_Lists/0146_LRU_Cache/problem.md) | Medium | ⊙ | |
 | 148 | [Sort List](hot100/05_Linked_Lists/0148_Sort_List/problem.md) | Medium | ☐ | |
 | 23 | [Merge k Sorted Lists](hot100/05_Linked_Lists/0023_Merge_k_Sorted_Lists/problem.md) | Hard | ☐ | |
 | 25 | [Reverse Nodes in k-Group](hot100/05_Linked_Lists/0025_Reverse_Nodes_in_k-Group/problem.md) | Hard | ☐ | |

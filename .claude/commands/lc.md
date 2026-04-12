@@ -62,8 +62,11 @@ bash .claude/scripts/lc_fetch.sh SLUG
 
 参照 `.claude/templates/solution_template.cpp` 和 `.claude/templates/solution_template.go`。
 从 metaData JSON 提取函数名和参数/返回类型，按 `.claude/lc_type_map.md` 做类型映射，替换占位符。
-至少写 5 个测试用例（所有示例 + ≥2 边界用例）。
 涉及 TreeNode/ListNode 时，在 Solution 上方插入 lc_type_map.md 中的标准结构体定义。
+
+**重要：Solution 类/函数体只保留 `// TODO: implement`，绝对不写任何解题逻辑。** 这是用户的做题空间，不能替用户实现。
+
+测试用例（至少 5 个：所有示例 + ≥2 边界用例）要写完整的调用和期望值，但依赖 Solution 的正确性，当前运行会全部失败——这是正常的。
 
 ## 步骤六：更新 README
 

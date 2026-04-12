@@ -3,7 +3,7 @@
 # Output: JSON {id, title, difficulty, content (plain text), metaData}
 set -e
 SLUG=$1
-QUERY='{"query":"query questionData($titleSlug: String!) { question(titleSlug: $titleSlug) { questionId title difficulty content exampleTestcases metaData } }","variables":{"titleSlug":"'"$SLUG"'"}}'
+QUERY="{\"query\":\"query questionData(\$titleSlug: String!) { question(titleSlug: \$titleSlug) { questionId title difficulty content exampleTestcases metaData } }\",\"variables\":{\"titleSlug\":\"$SLUG\"}}"
 HEADERS=(-H 'Content-Type: application/json' -H 'User-Agent: Mozilla/5.0' -H 'x-csrftoken: lc' -H 'Cookie: csrftoken=lc')
 
 strip() {
@@ -16,7 +16,7 @@ strip() {
       | gsub("<[^>]+>"; "")
       | gsub("&lt;"; "<") | gsub("&gt;"; ">")
       | gsub("&amp;"; "&") | gsub("&quot;"; "\"")
-      | gsub("&#39;"; "'") | gsub("&nbsp;"; " "))
+      | gsub("&#39;"; "\u0027") | gsub("&nbsp;"; " "))
   }'
 }
 
