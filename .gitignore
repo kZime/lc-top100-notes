@@ -1,5 +1,7 @@
-# Compiled C++ / Go binaries (no extension, macOS/Linux)
-# Matches: solution, solution1, solution2, ..., sol, sol1, sol2, ...
+# Compiled binaries
+**/*.bin
+
+# Legacy no-extension binaries
 **/solution
 **/solution[0-9]
 **/sol
