@@ -11,8 +11,44 @@ using namespace std;
 class Solution {
 public:
     string decodeString(string s) {
-        // TODO: implement
-        return {};
+
+        string res, tmp;
+        int n = s.size(), tmpcnt = 0;
+        // find 
+        stack<pair<int, string> > left; // num before '['
+
+        left.emplace(1, "");
+
+
+        for (int i = 0; i < n; i++) {
+            if (isalpha(s[i])) {
+                left.top().second.push_back(s[i]);
+                continue;
+            }
+
+            if (isdigit(s[i])) { // start seg
+                tmpcnt = tmpcnt*10 + s[i]-'0';
+                continue;
+            }
+
+            if (s[i] == '[') {
+                left.emplace(tmpcnt, "");
+                tmpcnt = 0;
+                continue;
+            }
+
+            if (s[i] == ']') {
+                // auto [cnt, str] = left.top(); // DO NOT USE &[cnt, str], will ERROR!!!
+                auto [cnt, str] = move(left.top());
+                left.pop();
+                string &target = left.top().second;
+                target.reserve(target.size() + (size_t)cnt * str.size());
+                while (cnt--) {
+                    target += str;
+                }
+            }
+        }
+        return move(left.top().second);
     }
 };
 
@@ -37,6 +73,9 @@ int main() {
                    label.c_str(), toString(want).c_str(), toString(got).c_str());
         }
     };
+
+    // Debug
+    check(sol.decodeString("3[z]2[2[y]pq4[2[jk]e1[f]]]ef") , "zzzyypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef", "debug");
 
     // Examples
     check(sol.decodeString("3[a]2[bc]"),    "aaabcbc",        "3[a]2[bc]");

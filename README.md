@@ -6,16 +6,15 @@
 
 状态：☑ 完成　⊙ 尝试中　☐ 未开始
 
-**27 / 100**
+**28 / 100**
 
-## 尝试中（4 题）
+## 尝试中（3 题）
 
 | # | Title | Difficulty | Category |
 |---|-------|-----------|----------|
 | 233 | [Number of Digit One](hot100/15_Others/0233_Number_of_Digit_One/problem.md) | Hard | Misc |
 | 1993 | [Operations on Tree](hot100/15_Others/1993_Operations_on_Tree/problem.md) | Medium | Binary Tree |
 | 146 | [LRU Cache](hot100/05_Linked_Lists/0146_LRU_Cache/problem.md) | Medium | Linked Lists |
-| 394 | [Decode String](hot100/04_Stack/0394_Decode_String/problem.md) | Medium | Stack |
 
 ---
 
@@ -53,7 +52,7 @@
 |---|-------|-----------|:------:|-------|
 | 20 | [Valid Parentheses](hot100/04_Stack/0020_Valid_Parentheses/problem.md) | Easy | ☑ | [笔记](hot100/find_job_obs/0020_Valid_Parentheses/notes.md) |
 | 155 | [Min Stack](hot100/04_Stack/0155_Min_Stack/problem.md) | Medium | ☑ | [笔记](hot100/04_Stack/0155_Min_Stack/notes.md) |
-| 394 | [Decode String](hot100/04_Stack/0394_Decode_String/problem.md) | Medium | ⊙ | |
+| 394 | [Decode String](hot100/04_Stack/0394_Decode_String/problem.md) | Medium | ☑ | [笔记](hot100/04_Stack/0394_Decode_String/notes.md) |
 | 84 | [Largest Rectangle in Histogram](hot100/04_Stack/0084_Largest_Rectangle_in_Histogram/problem.md) | Hard | ☑ | [笔记](hot100/04_Stack/0084_Largest_Rectangle_in_Histogram/notes.md) |
 
 ## 5. Linked Lists
